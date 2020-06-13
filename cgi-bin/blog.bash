@@ -1,17 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-create_post() {
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\t\n'
+
+#shellcheck disable=SC2155
+readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
+	 SBN="$(basename "$(realpath "${BASH_SOURCE[0]}")")" \
+	 CRD="$(pwd -P)"
+readonly SNE="${SBN%.*}"
+
+create() {
   printf "\n"
 }
 
-edit_post() {
+retrieve() {
   printf "\n"
 }
 
-delete_post() {
+update() {
   printf "\n"
 }
 
-list_posts() {
+delete() {
   printf "\n"
 }
+
+blog() {
+    echo $SDN $SBN $CRD $SNE
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"
