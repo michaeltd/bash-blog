@@ -11,23 +11,36 @@ readonly SDN="$(dirname "$(realpath "${BASH_SOURCE[0]}")")" \
 readonly SNE="${SBN%.*}"
 
 create() {
-  printf "\n"
+    printf "\n"
 }
 
 retrieve() {
-  printf "\n"
+    printf "\n"
 }
 
 update() {
-  printf "\n"
+    printf "\n"
 }
 
 delete() {
-  printf "\n"
+    printf "\n"
+}
+
+wordcnt() {
+    echo $SDN $SBN $CRD $SNE
+}
+
+tagcnt() {
+    echo $SDN $SBN $CRD $SNE
 }
 
 blog() {
-    echo $SDN $SBN $CRD $SNE
+    printf "Content-Type: text/html; charset=utf-8\n\n"
+    printf "<html lang='en'><head><title>Hello World</title></head>"
+    printf "%s\n" "<body><h1>Hello World</h1>"
+    printf "<pre>%s</pre>\n" "$(env)"
+    printf "<pre>%s</pre>\n" "$(echo -e "Script Dir Name: $SDN\nScript Base Name: $SBN\nCurrent Dir: $CRD\nScript No Extension: $SNE\n")"
+    printf "%s\n" "</body></html>"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && "${SNE}" "${@}"
